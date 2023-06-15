@@ -2389,6 +2389,12 @@ public class SimpleGame extends PApplet {
             String[] dragonF = {"dragonF"};
             PApplet.runSketch(dragonF, new DragonFight());
             createNewWindow = false;
+            
+            // dibawah ini untuk hilangin tab
+            surface.setVisible(false);
+            
+            // untuk stop program kalo ganti tab
+            stop();
         }
 
         f++;
