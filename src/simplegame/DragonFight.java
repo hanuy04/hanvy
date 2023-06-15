@@ -51,6 +51,8 @@ public class DragonFight extends PApplet {
     PImage[] api;
 
     // player
+    PImage bgWin;
+    PImage bgLose;
     PImage bg;
     Knight k;
     PImage bg2;
@@ -157,6 +159,12 @@ public class DragonFight extends PApplet {
         PImage[] temp = new PImage[1];
         frameRate(FPS);
 
+        //background win
+        bgWin = loadImage("src/assets/background/win.png");
+        
+        //background lose
+        bgLose = loadImage("src/assets/background/lose.png");
+        
         // background
         bg2 = loadImage("src/assets/background/bg2.jpg");
 
@@ -570,6 +578,12 @@ public class DragonFight extends PApplet {
             int xGO = 640;
             int yGO = 360;
             text("GAME OVER! You Win...", xGO, yGO);
+        }
+        
+        if (hp <= 0) {
+            image(bgLose,0,0);
+        } else if (hpdr <= 0) {
+            image(bgWin,0,0);
         }
 
         // muncul button
