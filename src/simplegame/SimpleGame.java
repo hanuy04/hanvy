@@ -2262,8 +2262,48 @@ public class SimpleGame extends PApplet {
             text("(Gold+10)", xKillEnemy, yKillEnemy);
         }
 
+        
+        // cek apakah score sebelumnya > score sekarang
+        highScoreManager.updateHighScore(score);
+
+        // tampilkan highscore
+        text("High Score: " + highScoreManager.getHighScore(), 300, 50);
+
+        // muncul button dan tulisan
+        fill(255, 255, 255);
+        rect(dragon_fight.getX(), dragon_fight.getY(), dragon_fight.getWidth(), dragon_fight.getHeight());
+
+        fill(0, 0, 0);
+        text("Dragon Fight", (dragon_fight.getX() + dragon_fight.getWidth() / 2) - 78, (dragon_fight.getY() + dragon_fight.getHeight() / 2) + 5);
+
+        // untuk mengenali sensor mouse apakah sudah di button
+        sensor();
+
+        // mengubah bg saat dragon_fight
+        if (createNewWindow) {
+            pm.stop();
+            String[] dragonF = {"dragonF"};
+            PApplet.runSketch(dragonF, new DragonFight());
+            createNewWindow = false;
+        }
+        
         // game over
         if (hp <= 0) {
+            
+            pm.stop();
+            String bip = "src/assets/sound/Lose.wav";
+            SoundFile pm = new SoundFile(bip);
+            pm.PlayMusicSingle();
+            image(bgLose, 0, 0);
+            // koordinat gold
+            xG = 100;
+            yG = 50;
+            fill(255);
+            text("Score: " + score, xG, yG);
+            // tampilkan highscore
+            text("High Score: " + highScoreManager.getHighScore(), 300, 50);
+            fill(0);
+            
             tembak = false;
             tembakPanah = false;
             knOut = false;
@@ -2379,6 +2419,18 @@ public class SimpleGame extends PApplet {
             wave++;
             hp += 400;
         } else if (hpz <= 0 && hpz1 <= 0 && hpz2 <= 0 && hpz3 <= 0 && hpz4 <= 0 && hpz5 <= 0 && hpz6 <= 0 && hpz7 <= 0 && hpz8 <= 0 && hpz9 <= 0) {
+            pm.stop();
+            String bip = "src/assets/sound/Win.wav";
+            SoundFile pm = new SoundFile(bip);
+            image(bgWin, 0, 0);
+            // koordinat gold
+            xG = 100;
+            yG = 50;
+            fill(255);
+            text("Score: " + score, xG, yG);
+            // tampilkan highscore
+            text("High Score: " + highScoreManager.getHighScore(), 300, 50);
+            fill(0);
             // hp enemy
             z.setXz(-10000);
             z1.setXz(-10000);
@@ -2418,62 +2470,62 @@ public class SimpleGame extends PApplet {
         if (wave == 4) {
             exit();
         }
-
-        // cek apakah score sebelumnya > score sekarang
-        highScoreManager.updateHighScore(score);
-
-        // tampilkan highscore
-        text("High Score: " + highScoreManager.getHighScore(), 300, 50);
-
-        // muncul button dan tulisan
-        fill(255, 255, 255);
-        rect(dragon_fight.getX(), dragon_fight.getY(), dragon_fight.getWidth(), dragon_fight.getHeight());
-
-        fill(0, 0, 0);
-        text("Dragon Fight", (dragon_fight.getX() + dragon_fight.getWidth() / 2) - 78, (dragon_fight.getY() + dragon_fight.getHeight() / 2) + 5);
-
-        // untuk mengenali sensor mouse apakah sudah di button
-        sensor();
-
-        // mengubah bg saat dragon_fight
-        if (createNewWindow) {
-            pm.stop();
-            String[] dragonF = {"dragonF"};
-            PApplet.runSketch(dragonF, new DragonFight());
-            createNewWindow = false;
-        }
+//
+//        // cek apakah score sebelumnya > score sekarang
+//        highScoreManager.updateHighScore(score);
+//
+//        // tampilkan highscore
+//        text("High Score: " + highScoreManager.getHighScore(), 300, 50);
+//
+//        // muncul button dan tulisan
+//        fill(255, 255, 255);
+//        rect(dragon_fight.getX(), dragon_fight.getY(), dragon_fight.getWidth(), dragon_fight.getHeight());
+//
+//        fill(0, 0, 0);
+//        text("Dragon Fight", (dragon_fight.getX() + dragon_fight.getWidth() / 2) - 78, (dragon_fight.getY() + dragon_fight.getHeight() / 2) + 5);
+//
+//        // untuk mengenali sensor mouse apakah sudah di button
+//        sensor();
+//
+//        // mengubah bg saat dragon_fight
+//        if (createNewWindow) {
+//            pm.stop();
+//            String[] dragonF = {"dragonF"};
+//            PApplet.runSketch(dragonF, new DragonFight());
+//            createNewWindow = false;
+//        }
 
         f++;
-        if (hp <= 0) {
-            pm.stop();
-            String bip = "src/assets/sound/Lose.wav";
-            SoundFile pm = new SoundFile(bip);
-            pm.PlayMusicSingle();
-            image(bgLose, 0, 0);
-            // koordinat gold
-            xG = 100;
-            yG = 50;
-            fill(255);
-            text("Score: " + score, xG, yG);
-            // tampilkan highscore
-            text("High Score: " + highScoreManager.getHighScore(), 300, 50);
-            fill(0);
-        }
-        if (hpz <= 0 && hpz1 <= 0 && hpz2 <= 0 && hpz3 <= 0 && hpz4 <= 0 && hpz5 <= 0 && hpz6 <= 0 && hpz7 <= 0 && hpz8 <= 0 && hpz9 <= 0) {
-            
-            pm.stop();
-            String bip = "src/assets/sound/Win.wav";
-            SoundFile pm = new SoundFile(bip);
-            image(bgWin, 0, 0);
-            // koordinat gold
-            xG = 100;
-            yG = 50;
-            fill(255);
-            text("Score: " + score, xG, yG);
-            // tampilkan highscore
-            text("High Score: " + highScoreManager.getHighScore(), 300, 50);
-            fill(0);
-        }
+//        if (hp <= 0) {
+//            pm.stop();
+//            String bip = "src/assets/sound/Lose.wav";
+//            SoundFile pm = new SoundFile(bip);
+//            pm.PlayMusicSingle();
+//            image(bgLose, 0, 0);
+//            // koordinat gold
+//            xG = 100;
+//            yG = 50;
+//            fill(255);
+//            text("Score: " + score, xG, yG);
+//            // tampilkan highscore
+//            text("High Score: " + highScoreManager.getHighScore(), 300, 50);
+//            fill(0);
+//        }
+//        if (hpz <= 0 && hpz1 <= 0 && hpz2 <= 0 && hpz3 <= 0 && hpz4 <= 0 && hpz5 <= 0 && hpz6 <= 0 && hpz7 <= 0 && hpz8 <= 0 && hpz9 <= 0) {
+//            
+//            pm.stop();
+//            String bip = "src/assets/sound/Win.wav";
+//            SoundFile pm = new SoundFile(bip);
+//            image(bgWin, 0, 0);
+//            // koordinat gold
+//            xG = 100;
+//            yG = 50;
+//            fill(255);
+//            text("Score: " + score, xG, yG);
+//            // tampilkan highscore
+//            text("High Score: " + highScoreManager.getHighScore(), 300, 50);
+//            fill(0);
+//        }
     }
 
     public void keyPressed() {
