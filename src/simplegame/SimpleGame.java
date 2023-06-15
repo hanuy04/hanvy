@@ -21,7 +21,6 @@ public class SimpleGame extends PApplet {
 
     // background dragon_fight
     PImage bgdragonfight;
-    PImage bgWin, bgLose;
 
     // peluru
     ArrayList<Peluru> pel = new ArrayList<>();
@@ -42,9 +41,6 @@ public class SimpleGame extends PApplet {
     // runningman
     ArrayList<RunningManJalan> rn = new ArrayList<>();
     PImage[] runningman;
-
-    PImage[] knattack;
-    PImage[] rnattack;
 
     // enemy
     // player
@@ -67,6 +63,7 @@ public class SimpleGame extends PApplet {
     Archer l;
     KnightJalan kj;
     RunningMan r;
+    RunningManJalan rj;
 
     // enemy
     FlappyRider fr;
@@ -91,24 +88,27 @@ public class SimpleGame extends PApplet {
     int f = 0;
     int score;
     int hp = 1000;
-    int hpfr = 200;
-    int hpfr2 = 200;
-    int hpfr3 = 200;
-    int hprw = 300;
-    int hprw2 = 300;
-    int hprw3 = 300;
-    int hprw4 = 300;
-    int hprw5 = 300;
-    int hpz = 400;
-    int hpz1 = 400;
-    int hpz2 = 400;
-    int hpz3 = 400;
-    int hpz4 = 400;
-    int hpz5 = 400;
-    int hpz6 = 400;
-    int hpz7 = 400;
-    int hpz8 = 400;
-    int hpz9 = 400;
+    int hpv = 80;
+    int hpkn = 120;
+    int hprn = 70;
+    int hpfr = 500;
+    int hpfr2 = 500;
+    int hpfr3 = 500;
+    int hprw = 800;
+    int hprw2 = 800;
+    int hprw3 = 800;
+    int hprw4 = 800;
+    int hprw5 = 800;
+    int hpz = 1000;
+    int hpz1 = 1000;
+    int hpz2 = 1000;
+    int hpz3 = 1000;
+    int hpz4 = 1000;
+    int hpz5 = 1000;
+    int hpz6 = 1000;
+    int hpz7 = 1000;
+    int hpz8 = 1000;
+    int hpz9 = 1000;
     int level = 0;
     int wave = 1;
     int koorXfr = 0;
@@ -208,12 +208,6 @@ public class SimpleGame extends PApplet {
         bg = loadImage("src/assets/background/bgstone.jpg");
         PImage[] temp = new PImage[1];
         frameRate(FPS);
-
-        //background win
-        bgWin = loadImage("src/assets/background/win.png");
-
-        //background lose
-        bgLose = loadImage("src/assets/background/lose.png");
 
         // castle
         PImage[] fixed = new PImage[4];
@@ -356,20 +350,10 @@ public class SimpleGame extends PApplet {
             knight[m] = loadImage("src/assets/player/knight" + (m + 1) + ".png");
         }
 
-        knattack = new PImage[4];
-        for (int m = 0; m < 4; m++) {
-            knattack[m] = loadImage("src/assets/player/knightattack" + (m + 1) + ".png");
-        }
-
         // panggil runningman
         runningman = new PImage[7];
         for (int m = 0; m < runningman.length; m++) {
             runningman[m] = loadImage("src/assets/player/runningman" + (m + 1) + ".png");
-        }
-
-        rnattack = new PImage[6];
-        for (int m = 0; m < 6; m++) {
-            rnattack[m] = loadImage("src/assets/player/runningmanattack" + (m + 1) + ".png");
         }
 
         bgdragonfight = loadImage("src/assets/background/bg2.jpg");
@@ -1258,7 +1242,6 @@ public class SimpleGame extends PApplet {
             kn.get(i).drawIdle(this, f);
             if (wave == 1) {
                 if (kn.get(i).getXkj() >= fr.getXfr() && kn.get(i).getYkj() <= fr.getYfr() + 25 && kn.get(i).getYkj() >= fr.getYfr() - 25) {
-                    kn.get(i).setIdle(knattack, 4);
                     kn.get(i).bergerak(false, true, false, false);
                     String bip = "src/assets/sound/perang.wav";
                     SoundFile pm = new SoundFile(bip);
@@ -1284,7 +1267,6 @@ public class SimpleGame extends PApplet {
                         }
                     }
                 } else if (kn.get(i).getXkj() >= fr2.getXfr() && kn.get(i).getYkj() <= fr2.getYfr() + 25 && kn.get(i).getYkj() >= fr2.getYfr() - 25) {
-                    kn.get(i).setIdle(knattack, 4);
                     kn.get(i).bergerak(false, true, false, false);
                     String bip = "src/assets/sound/perang.wav";
                     SoundFile pm = new SoundFile(bip);
@@ -1310,7 +1292,6 @@ public class SimpleGame extends PApplet {
                         }
                     }
                 } else if (kn.get(i).getXkj() >= fr3.getXfr() && kn.get(i).getYkj() <= fr3.getYfr() + 25 && kn.get(i).getYkj() >= fr3.getYfr() - 25) {
-                    kn.get(i).setIdle(knattack, 4);
                     kn.get(i).bergerak(false, true, false, false);
                     String bip = "src/assets/sound/perang.wav";
                     SoundFile pm = new SoundFile(bip);
@@ -1338,7 +1319,6 @@ public class SimpleGame extends PApplet {
                 }
             } else if (wave == 2) {
                 if (kn.get(i).getXkj() >= rw.getXrw() && kn.get(i).getYkj() <= rw.getYrw() + 25 && kn.get(i).getYkj() >= rw.getYrw() - 25) {
-                    kn.get(i).setIdle(knattack, 4);
                     kn.get(i).bergerak(false, true, false, false);
                     String bip = "src/assets/sound/perang.wav";
                     SoundFile pm = new SoundFile(bip);
@@ -1364,7 +1344,6 @@ public class SimpleGame extends PApplet {
                         }
                     }
                 } else if (kn.get(i).getXkj() >= rw2.getXrw() && kn.get(i).getYkj() <= rw2.getYrw() + 25 && kn.get(i).getYkj() >= rw2.getYrw() - 25) {
-                    kn.get(i).setIdle(knattack, 4);
                     kn.get(i).bergerak(false, true, false, false);
                     String bip = "src/assets/sound/perang.wav";
                     SoundFile pm = new SoundFile(bip);
@@ -1390,7 +1369,6 @@ public class SimpleGame extends PApplet {
                         }
                     }
                 } else if (kn.get(i).getXkj() >= rw3.getXrw() && kn.get(i).getYkj() <= rw3.getYrw() + 25 && kn.get(i).getYkj() >= rw3.getYrw() - 25) {
-                    kn.get(i).setIdle(knattack, 4);
                     kn.get(i).bergerak(false, true, false, false);
                     String bip = "src/assets/sound/perang.wav";
                     SoundFile pm = new SoundFile(bip);
@@ -1416,7 +1394,6 @@ public class SimpleGame extends PApplet {
                         }
                     }
                 } else if (kn.get(i).getXkj() >= rw4.getXrw() && kn.get(i).getYkj() <= rw4.getYrw() + 25 && kn.get(i).getYkj() >= rw4.getYrw() - 25) {
-                    kn.get(i).setIdle(knattack, 4);
                     kn.get(i).bergerak(false, true, false, false);
                     String bip = "src/assets/sound/perang.wav";
                     SoundFile pm = new SoundFile(bip);
@@ -1442,7 +1419,6 @@ public class SimpleGame extends PApplet {
                         }
                     }
                 } else if (kn.get(i).getXkj() >= rw5.getXrw() && kn.get(i).getYkj() <= rw5.getYrw() + 25 && kn.get(i).getYkj() >= rw5.getYrw() - 25) {
-                    kn.get(i).setIdle(knattack, 4);
                     kn.get(i).bergerak(false, true, false, false);
                     String bip = "src/assets/sound/perang.wav";
                     SoundFile pm = new SoundFile(bip);
@@ -1470,7 +1446,6 @@ public class SimpleGame extends PApplet {
                 }
             } else if (wave == 3) {
                 if (kn.get(i).getXkj() >= z.getXz() && kn.get(i).getYkj() <= z.getYz() + 25 && kn.get(i).getYkj() >= z.getYz() - 25) {
-                    kn.get(i).setIdle(knattack, 4);
                     kn.get(i).bergerak(false, true, false, false);
                     String bip = "src/assets/sound/perang.wav";
                     SoundFile pm = new SoundFile(bip);
@@ -1496,7 +1471,6 @@ public class SimpleGame extends PApplet {
                         }
                     }
                 } else if (kn.get(i).getXkj() >= z1.getXz() && kn.get(i).getYkj() <= z1.getYz() + 25 && kn.get(i).getYkj() >= z1.getYz() - 25) {
-                    kn.get(i).setIdle(knattack, 4);
                     kn.get(i).bergerak(false, true, false, false);
                     String bip = "src/assets/sound/perang.wav";
                     SoundFile pm = new SoundFile(bip);
@@ -1522,7 +1496,6 @@ public class SimpleGame extends PApplet {
                         }
                     }
                 } else if (kn.get(i).getXkj() >= z2.getXz() && kn.get(i).getYkj() <= z2.getYz() + 25 && kn.get(i).getYkj() >= z2.getYz() - 25) {
-                    kn.get(i).setIdle(knattack, 4);
                     kn.get(i).bergerak(false, true, false, false);
                     String bip = "src/assets/sound/perang.wav";
                     SoundFile pm = new SoundFile(bip);
@@ -1548,7 +1521,6 @@ public class SimpleGame extends PApplet {
                         }
                     }
                 } else if (kn.get(i).getXkj() >= z3.getXz() && kn.get(i).getYkj() <= z3.getYz() + 25 && kn.get(i).getYkj() >= z3.getYz() - 25) {
-                    kn.get(i).setIdle(knattack, 4);
                     kn.get(i).bergerak(false, true, false, false);
                     String bip = "src/assets/sound/perang.wav";
                     SoundFile pm = new SoundFile(bip);
@@ -1574,7 +1546,6 @@ public class SimpleGame extends PApplet {
                         }
                     }
                 } else if (kn.get(i).getXkj() >= z4.getXz() && kn.get(i).getYkj() <= z4.getYz() + 25 && kn.get(i).getYkj() >= z4.getYz() - 25) {
-                    kn.get(i).setIdle(knattack, 4);
                     kn.get(i).bergerak(false, true, false, false);
                     String bip = "src/assets/sound/perang.wav";
                     SoundFile pm = new SoundFile(bip);
@@ -1600,7 +1571,6 @@ public class SimpleGame extends PApplet {
                         }
                     }
                 } else if (kn.get(i).getXkj() >= z5.getXz() && kn.get(i).getYkj() <= z5.getYz() + 25 && kn.get(i).getYkj() >= z5.getYz() - 25) {
-                    kn.get(i).setIdle(knattack, 4);
                     kn.get(i).bergerak(false, true, false, false);
                     String bip = "src/assets/sound/perang.wav";
                     SoundFile pm = new SoundFile(bip);
@@ -1626,7 +1596,6 @@ public class SimpleGame extends PApplet {
                         }
                     }
                 } else if (kn.get(i).getXkj() >= z6.getXz() && kn.get(i).getYkj() <= z6.getYz() + 25 && kn.get(i).getYkj() >= z6.getYz() - 25) {
-                    kn.get(i).setIdle(knattack, 4);
                     kn.get(i).bergerak(false, true, false, false);
                     String bip = "src/assets/sound/perang.wav";
                     SoundFile pm = new SoundFile(bip);
@@ -1652,7 +1621,6 @@ public class SimpleGame extends PApplet {
                         }
                     }
                 } else if (kn.get(i).getXkj() >= z7.getXz() && kn.get(i).getYkj() <= z7.getYz() + 25 && kn.get(i).getYkj() >= z7.getYz() - 25) {
-                    kn.get(i).setIdle(knattack, 4);
                     kn.get(i).bergerak(false, true, false, false);
                     String bip = "src/assets/sound/perang.wav";
                     SoundFile pm = new SoundFile(bip);
@@ -1678,7 +1646,6 @@ public class SimpleGame extends PApplet {
                         }
                     }
                 } else if (kn.get(i).getXkj() >= z8.getXz() && kn.get(i).getYkj() <= z8.getYz() + 25 && kn.get(i).getYkj() >= z8.getYz() - 25) {
-                    kn.get(i).setIdle(knattack, 4);
                     kn.get(i).bergerak(false, true, false, false);
                     String bip = "src/assets/sound/perang.wav";
                     SoundFile pm = new SoundFile(bip);
@@ -1704,7 +1671,6 @@ public class SimpleGame extends PApplet {
                         }
                     }
                 } else if (kn.get(i).getXkj() >= z9.getXz() && kn.get(i).getYkj() <= z9.getYz() + 25 && kn.get(i).getYkj() >= z9.getYz() - 25) {
-                    kn.get(i).setIdle(knattack, 4);
                     kn.get(i).bergerak(false, true, false, false);
                     String bip = "src/assets/sound/perang.wav";
                     SoundFile pm = new SoundFile(bip);
@@ -1739,7 +1705,6 @@ public class SimpleGame extends PApplet {
             rn.get(i).drawIdle(this, f);
             if (wave == 1) {
                 if (rn.get(i).getXrj() >= fr.getXfr() && rn.get(i).getYrj() <= fr.getYfr() + 25 && rn.get(i).getYrj() >= fr.getYfr() - 25) {
-                    rn.get(i).setIdle(rnattack, 6);
                     String bip = "src/assets/sound/tinju.wav";
                     SoundFile pm = new SoundFile(bip);
                     pm.PlayMusicSingle();
@@ -1763,7 +1728,6 @@ public class SimpleGame extends PApplet {
                         }
                     }
                 } else if (rn.get(i).getXrj() >= fr2.getXfr() && rn.get(i).getYrj() <= fr2.getYfr() + 25 && rn.get(i).getYrj() >= fr2.getYfr() - 25) {
-                    rn.get(i).setIdle(rnattack, 6);
                     String bip = "src/assets/sound/tinju.wav";
                     SoundFile pm = new SoundFile(bip);
                     pm.PlayMusicSingle();
@@ -1787,7 +1751,6 @@ public class SimpleGame extends PApplet {
                         }
                     }
                 } else if (rn.get(i).getXrj() >= fr3.getXfr() && rn.get(i).getYrj() <= fr3.getYfr() + 25 && rn.get(i).getYrj() >= fr3.getYfr() - 25) {
-                    rn.get(i).setIdle(rnattack, 6);
                     String bip = "src/assets/sound/tinju.wav";
                     SoundFile pm = new SoundFile(bip);
                     pm.PlayMusicSingle();
@@ -1813,7 +1776,6 @@ public class SimpleGame extends PApplet {
                 }
             } else if (wave == 2) {
                 if (rn.get(i).getXrj() >= rw.getXrw() && rn.get(i).getYrj() <= rw.getYrw() + 25 && rn.get(i).getYrj() >= rw.getYrw() - 25) {
-                    rn.get(i).setIdle(rnattack, 6);
                     String bip = "src/assets/sound/tinju.wav";
                     SoundFile pm = new SoundFile(bip);
                     pm.PlayMusicSingle();
@@ -1837,7 +1799,6 @@ public class SimpleGame extends PApplet {
                         }
                     }
                 } else if (rn.get(i).getXrj() >= rw2.getXrw() && rn.get(i).getYrj() <= rw2.getYrw() + 25 && rn.get(i).getYrj() >= rw2.getYrw() - 25) {
-                    rn.get(i).setIdle(rnattack, 6);
                     String bip = "src/assets/sound/tinju.wav";
                     SoundFile pm = new SoundFile(bip);
                     pm.PlayMusicSingle();
@@ -1861,7 +1822,6 @@ public class SimpleGame extends PApplet {
                         }
                     }
                 } else if (rn.get(i).getXrj() >= rw3.getXrw() && rn.get(i).getYrj() <= rw3.getYrw() + 25 && rn.get(i).getYrj() >= rw3.getYrw() - 25) {
-                    rn.get(i).setIdle(rnattack, 6);
                     String bip = "src/assets/sound/tinju.wav";
                     SoundFile pm = new SoundFile(bip);
                     pm.PlayMusicSingle();
@@ -1885,7 +1845,6 @@ public class SimpleGame extends PApplet {
                         }
                     }
                 } else if (rn.get(i).getXrj() >= rw4.getXrw() && rn.get(i).getYrj() <= rw4.getYrw() + 25 && rn.get(i).getYrj() >= rw4.getYrw() - 25) {
-                    rn.get(i).setIdle(rnattack, 6);
                     String bip = "src/assets/sound/tinju.wav";
                     SoundFile pm = new SoundFile(bip);
                     pm.PlayMusicSingle();
@@ -1909,7 +1868,6 @@ public class SimpleGame extends PApplet {
                         }
                     }
                 } else if (rn.get(i).getXrj() >= rw5.getXrw() && rn.get(i).getYrj() <= rw5.getYrw() + 25 && rn.get(i).getYrj() >= rw5.getYrw() - 25) {
-                    rn.get(i).setIdle(rnattack, 6);
                     String bip = "src/assets/sound/tinju.wav";
                     SoundFile pm = new SoundFile(bip);
                     pm.PlayMusicSingle();
@@ -1935,7 +1893,6 @@ public class SimpleGame extends PApplet {
                 }
             } else if (wave == 3) {
                 if (rn.get(i).getXrj() >= z.getXz() && rn.get(i).getYrj() <= z.getYz() + 25 && rn.get(i).getYrj() >= z.getYz() - 25) {
-                    rn.get(i).setIdle(rnattack, 6);
                     String bip = "src/assets/sound/tinju.wav";
                     SoundFile pm = new SoundFile(bip);
                     pm.PlayMusicSingle();
@@ -1959,7 +1916,6 @@ public class SimpleGame extends PApplet {
                         }
                     }
                 } else if (rn.get(i).getXrj() >= z1.getXz() && rn.get(i).getYrj() <= z1.getYz() + 25 && rn.get(i).getYrj() >= z1.getYz() - 25) {
-                    rn.get(i).setIdle(rnattack, 6);
                     String bip = "src/assets/sound/tinju.wav";
                     SoundFile pm = new SoundFile(bip);
                     pm.PlayMusicSingle();
@@ -1983,7 +1939,6 @@ public class SimpleGame extends PApplet {
                         }
                     }
                 } else if (rn.get(i).getXrj() >= z2.getXz() && rn.get(i).getYrj() <= z2.getYz() + 25 && rn.get(i).getYrj() >= z2.getYz() - 25) {
-                    rn.get(i).setIdle(rnattack, 6);
                     String bip = "src/assets/sound/tinju.wav";
                     SoundFile pm = new SoundFile(bip);
                     pm.PlayMusicSingle();
@@ -2007,7 +1962,6 @@ public class SimpleGame extends PApplet {
                         }
                     }
                 } else if (rn.get(i).getXrj() >= z3.getXz() && rn.get(i).getYrj() <= z3.getYz() + 25 && rn.get(i).getYrj() >= z3.getYz() - 25) {
-                    rn.get(i).setIdle(rnattack, 6);
                     String bip = "src/assets/sound/tinju.wav";
                     SoundFile pm = new SoundFile(bip);
                     pm.PlayMusicSingle();
@@ -2031,7 +1985,6 @@ public class SimpleGame extends PApplet {
                         }
                     }
                 } else if (rn.get(i).getXrj() >= z4.getXz() && rn.get(i).getYrj() <= z4.getYz() + 25 && rn.get(i).getYrj() >= z4.getYz() - 25) {
-                    rn.get(i).setIdle(rnattack, 6);
                     String bip = "src/assets/sound/tinju.wav";
                     SoundFile pm = new SoundFile(bip);
                     pm.PlayMusicSingle();
@@ -2055,7 +2008,6 @@ public class SimpleGame extends PApplet {
                         }
                     }
                 } else if (rn.get(i).getXrj() >= z5.getXz() && rn.get(i).getYrj() <= z5.getYz() + 25 && rn.get(i).getYrj() >= z5.getYz() - 25) {
-                    rn.get(i).setIdle(rnattack, 6);
                     String bip = "src/assets/sound/tinju.wav";
                     SoundFile pm = new SoundFile(bip);
                     pm.PlayMusicSingle();
@@ -2079,7 +2031,6 @@ public class SimpleGame extends PApplet {
                         }
                     }
                 } else if (rn.get(i).getXrj() >= z6.getXz() && rn.get(i).getYrj() <= z6.getYz() + 25 && rn.get(i).getYrj() >= z6.getYz() - 25) {
-                    rn.get(i).setIdle(rnattack, 6);
                     String bip = "src/assets/sound/tinju.wav";
                     SoundFile pm = new SoundFile(bip);
                     pm.PlayMusicSingle();
@@ -2103,7 +2054,6 @@ public class SimpleGame extends PApplet {
                         }
                     }
                 } else if (rn.get(i).getXrj() >= z7.getXz() && rn.get(i).getYrj() <= z7.getYz() + 25 && rn.get(i).getYrj() >= z7.getYz() - 25) {
-                    rn.get(i).setIdle(rnattack, 6);
                     String bip = "src/assets/sound/tinju.wav";
                     SoundFile pm = new SoundFile(bip);
                     pm.PlayMusicSingle();
@@ -2127,7 +2077,6 @@ public class SimpleGame extends PApplet {
                         }
                     }
                 } else if (rn.get(i).getXrj() >= z8.getXz() && rn.get(i).getYrj() <= z8.getYz() + 25 && rn.get(i).getYrj() >= z8.getYz() - 25) {
-                    rn.get(i).setIdle(rnattack, 6);
                     String bip = "src/assets/sound/tinju.wav";
                     SoundFile pm = new SoundFile(bip);
                     pm.PlayMusicSingle();
@@ -2151,7 +2100,6 @@ public class SimpleGame extends PApplet {
                         }
                     }
                 } else if (rn.get(i).getXrj() >= z9.getXz() && rn.get(i).getYrj() <= z9.getYz() + 25 && rn.get(i).getYrj() >= z9.getYz() - 25) {
-                    rn.get(i).setIdle(rnattack, 6);
                     String bip = "src/assets/sound/tinju.wav";
                     SoundFile pm = new SoundFile(bip);
                     pm.PlayMusicSingle();
@@ -2262,48 +2210,8 @@ public class SimpleGame extends PApplet {
             text("(Gold+10)", xKillEnemy, yKillEnemy);
         }
 
-        
-        // cek apakah score sebelumnya > score sekarang
-        highScoreManager.updateHighScore(score);
-
-        // tampilkan highscore
-        text("High Score: " + highScoreManager.getHighScore(), 300, 50);
-
-        // muncul button dan tulisan
-        fill(255, 255, 255);
-        rect(dragon_fight.getX(), dragon_fight.getY(), dragon_fight.getWidth(), dragon_fight.getHeight());
-
-        fill(0, 0, 0);
-        text("Dragon Fight", (dragon_fight.getX() + dragon_fight.getWidth() / 2) - 78, (dragon_fight.getY() + dragon_fight.getHeight() / 2) + 5);
-
-        // untuk mengenali sensor mouse apakah sudah di button
-        sensor();
-
-        // mengubah bg saat dragon_fight
-        if (createNewWindow) {
-            pm.stop();
-            String[] dragonF = {"dragonF"};
-            PApplet.runSketch(dragonF, new DragonFight());
-            createNewWindow = false;
-        }
-        
         // game over
         if (hp <= 0) {
-            
-            pm.stop();
-            String bip = "src/assets/sound/Lose.wav";
-            SoundFile pm = new SoundFile(bip);
-            pm.PlayMusicSingle();
-            image(bgLose, 0, 0);
-            // koordinat gold
-            xG = 100;
-            yG = 50;
-            fill(255);
-            text("Score: " + score, xG, yG);
-            // tampilkan highscore
-            text("High Score: " + highScoreManager.getHighScore(), 300, 50);
-            fill(0);
-            
             tembak = false;
             tembakPanah = false;
             knOut = false;
@@ -2352,8 +2260,7 @@ public class SimpleGame extends PApplet {
 
             int xGO = 640;
             int yGO = 360;
-
-//            text("GAME OVER! You Lose...", xGO, yGO);
+            text("GAME OVER! You Lose...", xGO, yGO);
         } else if (hpfr <= 0 && hpfr2 <= 0 && hpfr3 <= 0) {
             // hp enemy
             fr.setXfr(-10000);
@@ -2419,18 +2326,6 @@ public class SimpleGame extends PApplet {
             wave++;
             hp += 400;
         } else if (hpz <= 0 && hpz1 <= 0 && hpz2 <= 0 && hpz3 <= 0 && hpz4 <= 0 && hpz5 <= 0 && hpz6 <= 0 && hpz7 <= 0 && hpz8 <= 0 && hpz9 <= 0) {
-            pm.stop();
-            String bip = "src/assets/sound/Win.wav";
-            SoundFile pm = new SoundFile(bip);
-            image(bgWin, 0, 0);
-            // koordinat gold
-            xG = 100;
-            yG = 50;
-            fill(255);
-            text("Score: " + score, xG, yG);
-            // tampilkan highscore
-            text("High Score: " + highScoreManager.getHighScore(), 300, 50);
-            fill(0);
             // hp enemy
             z.setXz(-10000);
             z1.setXz(-10000);
@@ -2465,67 +2360,44 @@ public class SimpleGame extends PApplet {
 
             int xGO = 640;
             int yGO = 360;
+            text("Game Over! Nice Game", xGO, yGO);
         }
 
         if (wave == 4) {
             exit();
         }
-//
-//        // cek apakah score sebelumnya > score sekarang
-//        highScoreManager.updateHighScore(score);
-//
-//        // tampilkan highscore
-//        text("High Score: " + highScoreManager.getHighScore(), 300, 50);
-//
-//        // muncul button dan tulisan
-//        fill(255, 255, 255);
-//        rect(dragon_fight.getX(), dragon_fight.getY(), dragon_fight.getWidth(), dragon_fight.getHeight());
-//
-//        fill(0, 0, 0);
-//        text("Dragon Fight", (dragon_fight.getX() + dragon_fight.getWidth() / 2) - 78, (dragon_fight.getY() + dragon_fight.getHeight() / 2) + 5);
-//
-//        // untuk mengenali sensor mouse apakah sudah di button
-//        sensor();
-//
-//        // mengubah bg saat dragon_fight
-//        if (createNewWindow) {
-//            pm.stop();
-//            String[] dragonF = {"dragonF"};
-//            PApplet.runSketch(dragonF, new DragonFight());
-//            createNewWindow = false;
-//        }
+
+        // cek apakah score sebelumnya > score sekarang
+        highScoreManager.updateHighScore(score);
+
+        // tampilkan highscore
+        text("High Score: " + highScoreManager.getHighScore(), 300, 50);
+
+        // muncul button dan tulisan
+        fill(255, 255, 255);
+        rect(dragon_fight.getX(), dragon_fight.getY(), dragon_fight.getWidth(), dragon_fight.getHeight());
+
+        fill(0, 0, 0);
+        text("Dragon Fight", (dragon_fight.getX() + dragon_fight.getWidth() / 2) - 78, (dragon_fight.getY() + dragon_fight.getHeight() / 2) + 5);
+
+        // untuk mengenali sensor mouse apakah sudah di button
+        sensor();
+
+        // mengubah bg saat dragon_fight
+        if (createNewWindow) {
+            pm.stop();
+            String[] dragonF = {"dragonF"};
+            PApplet.runSketch(dragonF, new DragonFight());
+            createNewWindow = false;
+            
+            // dibawah ini untuk hilangin tab
+            surface.setVisible(false);
+            
+            // untuk stop program kalo ganti tab
+            stop();
+        }
 
         f++;
-//        if (hp <= 0) {
-//            pm.stop();
-//            String bip = "src/assets/sound/Lose.wav";
-//            SoundFile pm = new SoundFile(bip);
-//            pm.PlayMusicSingle();
-//            image(bgLose, 0, 0);
-//            // koordinat gold
-//            xG = 100;
-//            yG = 50;
-//            fill(255);
-//            text("Score: " + score, xG, yG);
-//            // tampilkan highscore
-//            text("High Score: " + highScoreManager.getHighScore(), 300, 50);
-//            fill(0);
-//        }
-//        if (hpz <= 0 && hpz1 <= 0 && hpz2 <= 0 && hpz3 <= 0 && hpz4 <= 0 && hpz5 <= 0 && hpz6 <= 0 && hpz7 <= 0 && hpz8 <= 0 && hpz9 <= 0) {
-//            
-//            pm.stop();
-//            String bip = "src/assets/sound/Win.wav";
-//            SoundFile pm = new SoundFile(bip);
-//            image(bgWin, 0, 0);
-//            // koordinat gold
-//            xG = 100;
-//            yG = 50;
-//            fill(255);
-//            text("Score: " + score, xG, yG);
-//            // tampilkan highscore
-//            text("High Score: " + highScoreManager.getHighScore(), 300, 50);
-//            fill(0);
-//        }
     }
 
     public void keyPressed() {
