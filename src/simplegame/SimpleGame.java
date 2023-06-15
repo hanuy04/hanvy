@@ -2400,6 +2400,10 @@ public class SimpleGame extends PApplet {
 
         f++;
         if (hp <= 0) {
+            pm.stop();
+            String bip = "src/assets/sound/Lose.wav";
+            SoundFile pm = new SoundFile(bip);
+            pm.PlayMusicSingle();
             image(bgLose, 0, 0);
             // koordinat gold
             xG = 100;
@@ -2411,6 +2415,10 @@ public class SimpleGame extends PApplet {
             fill(0);
         }
         if (hpz <= 0 && hpz1 <= 0 && hpz2 <= 0 && hpz3 <= 0 && hpz4 <= 0 && hpz5 <= 0 && hpz6 <= 0 && hpz7 <= 0 && hpz8 <= 0 && hpz9 <= 0) {
+            
+            pm.stop();
+            String bip = "src/assets/sound/Win.wav";
+            SoundFile pm = new SoundFile(bip);
             image(bgWin, 0, 0);
             // koordinat gold
             xG = 100;
