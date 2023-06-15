@@ -21,6 +21,7 @@ public class SimpleGame extends PApplet {
 
     // background dragon_fight
     PImage bgdragonfight;
+    PImage bgWin, bgLose;
 
     // peluru
     ArrayList<Peluru> pel = new ArrayList<>();
@@ -207,6 +208,12 @@ public class SimpleGame extends PApplet {
         bg = loadImage("src/assets/background/bgstone.jpg");
         PImage[] temp = new PImage[1];
         frameRate(FPS);
+
+        //background win
+        bgWin = loadImage("src/assets/background/win.png");
+
+        //background lose
+        bgLose = loadImage("src/assets/background/lose.png");
 
         // castle
         PImage[] fixed = new PImage[4];
@@ -2305,7 +2312,8 @@ public class SimpleGame extends PApplet {
 
             int xGO = 640;
             int yGO = 360;
-            text("GAME OVER! You Lose...", xGO, yGO);
+
+//            text("GAME OVER! You Lose...", xGO, yGO);
         } else if (hpfr <= 0 && hpfr2 <= 0 && hpfr3 <= 0) {
             // hp enemy
             fr.setXfr(-10000);
@@ -2405,7 +2413,6 @@ public class SimpleGame extends PApplet {
 
             int xGO = 640;
             int yGO = 360;
-            text("Game Over! Nice Game", xGO, yGO);
         }
 
         if (wave == 4) {
@@ -2437,6 +2444,36 @@ public class SimpleGame extends PApplet {
         }
 
         f++;
+        if (hp <= 0) {
+            pm.stop();
+            String bip = "src/assets/sound/Lose.wav";
+            SoundFile pm = new SoundFile(bip);
+            pm.PlayMusicSingle();
+            image(bgLose, 0, 0);
+            // koordinat gold
+            xG = 100;
+            yG = 50;
+            fill(255);
+            text("Score: " + score, xG, yG);
+            // tampilkan highscore
+            text("High Score: " + highScoreManager.getHighScore(), 300, 50);
+            fill(0);
+        }
+        if (hpz <= 0 && hpz1 <= 0 && hpz2 <= 0 && hpz3 <= 0 && hpz4 <= 0 && hpz5 <= 0 && hpz6 <= 0 && hpz7 <= 0 && hpz8 <= 0 && hpz9 <= 0) {
+            
+            pm.stop();
+            String bip = "src/assets/sound/Win.wav";
+            SoundFile pm = new SoundFile(bip);
+            image(bgWin, 0, 0);
+            // koordinat gold
+            xG = 100;
+            yG = 50;
+            fill(255);
+            text("Score: " + score, xG, yG);
+            // tampilkan highscore
+            text("High Score: " + highScoreManager.getHighScore(), 300, 50);
+            fill(0);
+        }
     }
 
     public void keyPressed() {
