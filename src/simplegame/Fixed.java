@@ -54,4 +54,10 @@ public class Fixed extends PApplet {
         app.image(idle[t], x, y);
     }
 
+    public void setIdle(PImage[] idle) {
+        this.idle = idle;
+    }
+    
+    
+
 }

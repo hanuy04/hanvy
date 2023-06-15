@@ -72,4 +72,6 @@ public class RunningMan extends Fixed {
         app.image(idle[t], xr, yr, width, height);
     }
 
+    
+
 }

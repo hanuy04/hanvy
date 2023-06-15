@@ -14,7 +14,7 @@ import processing.core.PImage;
 public class KnightJalan {
 
     private PImage[] idle;
-    private int width, height, xkj, ykj, hpk;
+    private int width, height, xkj, ykj, hpk, frame;
     private int t = 0;
 
     public KnightJalan(PImage[] idle, int width, int height, int x, int y, int xkj, int ykj, int hpk) {
@@ -23,7 +23,8 @@ public class KnightJalan {
         this.height = height;
         this.xkj = xkj;
         this.ykj = ykj;
-        this.hpk = hpk;
+        this.hpk = 120;
+        this.frame = 6;
     }
 
     public int getHpk() {
@@ -74,7 +75,7 @@ public class KnightJalan {
         if (f % 10 == 0) {
             t++;
         }
-        if (t >= 6) {
+        if (t >= frame) {
             t = 0;
         }
         app.image(idle[t], xkj, ykj, width, height);
@@ -90,5 +91,10 @@ public class KnightJalan {
         } else if (down) {
             ykj += 3;
         }
+    }
+
+    public void setIdle(PImage[] idle, int t) {
+        this.idle = idle;
+        this.frame = t;
     }
 }

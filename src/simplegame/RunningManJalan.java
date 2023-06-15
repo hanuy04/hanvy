@@ -14,7 +14,7 @@ import processing.core.PImage;
 public class RunningManJalan {
 
     private PImage[] idle;
-    private int width, height, xrj, yrj, hpr;
+    private int width, height, xrj, yrj, hpr, frame;
     private int t = 0;
 
     public RunningManJalan(PImage[] idle, int width, int height, int x, int y, int xrj, int yrj, int hpr) {
@@ -23,7 +23,8 @@ public class RunningManJalan {
         this.height = height;
         this.xrj = xrj;
         this.yrj = yrj;
-        this.hpr = hpr;
+        this.hpr = 100;
+        this.frame = 7;
     }
 
     public int getHpr() {
@@ -74,7 +75,7 @@ public class RunningManJalan {
         if (f % 10 == 0) {
             t++;
         }
-        if (t >= 7) {
+        if (t >= frame) {
             t = 0;
         }
         app.image(idle[t], xrj, yrj, width, height);
@@ -90,5 +91,10 @@ public class RunningManJalan {
         } else if (down) {
             yrj += 2;
         }
+    }
+
+    public void setIdle(PImage[] idle, int t) {
+        this.idle = idle;
+        this.frame = t;
     }
 }

@@ -24,7 +24,7 @@ public class Vampire extends Fixed {
         this.height = height;
         this.xv = xv;
         this.yv = yv;
-        this.hpv = hpv;
+        this.hpv = 120;
     }
 
     public int getHpv() {
