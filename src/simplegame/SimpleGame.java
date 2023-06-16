@@ -42,7 +42,7 @@ public class SimpleGame extends PApplet {
     // runningman
     ArrayList<RunningManJalan> rn = new ArrayList<>();
     PImage[] runningman;
-
+    
     PImage[] knattack;
     PImage[] rnattack;
 
@@ -87,7 +87,7 @@ public class SimpleGame extends PApplet {
     Zombie z7;
     Zombie z8;
     Zombie z9;
-
+    
     int f = 0;
     int score;
     int hp = 1000;
@@ -147,7 +147,7 @@ public class SimpleGame extends PApplet {
     int koorYz8 = 0;
     int koorXz9 = 0;
     int koorYz9 = 0;
-
+    
     private HighScoreManager highScoreManager;
 
     // boolean untuk button lawan dragon
@@ -173,12 +173,12 @@ public class SimpleGame extends PApplet {
 
     // button
     private Button dragon_fight = new Button(800, 100, 40, 160);
-
+    
     public static void main(String[] args) {
         // TODO code application logic here
         PApplet.main("simplegame.SimpleGame");
     }
-
+    
     public void settings() {
         // setting default screen
         size(WIDTH, HEIGHT); // 1280x720
@@ -244,37 +244,37 @@ public class SimpleGame extends PApplet {
         PImage[] fixedChar4 = new PImage[12];
         fixedChar4[0] = loadImage("src/assets/backup/archer.png");
         a = new Archer(fixedChar4, 80, 50, 780, 480, 100, 450);
-
+        
         fixedChar4[1] = loadImage("src/assets/backup/archer.png");
         be = new Archer(fixedChar4, 80, 50, 780, 480, 100, 500);
-
+        
         fixedChar4[2] = loadImage("src/assets/backup/archer.png");
         ce = new Archer(fixedChar4, 80, 50, 780, 480, 100, 550);
-
+        
         fixedChar4[3] = loadImage("src/assets/backup/archer.png");
         d = new Archer(fixedChar4, 80, 50, 780, 480, 100, 600);
-
+        
         fixedChar4[4] = loadImage("src/assets/backup/archer.png");
         e = new Archer(fixedChar4, 80, 50, 780, 480, 60, 450);
-
+        
         fixedChar4[5] = loadImage("src/assets/backup/archer.png");
         ef = new Archer(fixedChar4, 80, 50, 780, 480, 60, 500);
-
+        
         fixedChar4[6] = loadImage("src/assets/backup/archer.png");
         g = new Archer(fixedChar4, 80, 50, 780, 480, 60, 550);
-
+        
         fixedChar4[7] = loadImage("src/assets/backup/archer.png");
         h = new Archer(fixedChar4, 80, 50, 780, 480, 60, 600);
-
+        
         fixedChar4[8] = loadImage("src/assets/backup/archer.png");
         i = new Archer(fixedChar4, 80, 50, 780, 480, 20, 450);
-
+        
         fixedChar4[9] = loadImage("src/assets/backup/archer.png");
         j = new Archer(fixedChar4, 80, 50, 780, 480, 20, 500);
-
+        
         fixedChar4[10] = loadImage("src/assets/backup/archer.png");
         ka = new Archer(fixedChar4, 80, 50, 780, 480, 20, 550);
-
+        
         fixedChar4[11] = loadImage("src/assets/backup/archer.png");
         l = new Archer(fixedChar4, 80, 50, 780, 480, 20, 600);
 
@@ -355,7 +355,7 @@ public class SimpleGame extends PApplet {
         for (int m = 0; m < knight.length; m++) {
             knight[m] = loadImage("src/assets/player/knight" + (m + 1) + ".png");
         }
-
+        
         knattack = new PImage[4];
         for (int m = 0; m < 4; m++) {
             knattack[m] = loadImage("src/assets/player/knightattack" + (m + 1) + ".png");
@@ -366,20 +366,20 @@ public class SimpleGame extends PApplet {
         for (int m = 0; m < runningman.length; m++) {
             runningman[m] = loadImage("src/assets/player/runningman" + (m + 1) + ".png");
         }
-
+        
         rnattack = new PImage[6];
         for (int m = 0; m < 6; m++) {
             rnattack[m] = loadImage("src/assets/player/runningmanattack" + (m + 1) + ".png");
         }
-
+        
         bgdragonfight = loadImage("src/assets/background/bg2.jpg");
     }
-
+    
     public void draw() {
         // kalau dipencet b
         if (tembak) {
             pel.add(new Peluru(peluru, 50, 10, 265, 330));
-
+            
             tembak = false;
         }
 
@@ -402,7 +402,7 @@ public class SimpleGame extends PApplet {
             pan.add(new Panah(panah, 90, 60, 20, 500));
             pan.add(new Panah(panah, 90, 60, 20, 550));
             pan.add(new Panah(panah, 90, 60, 20, 600));
-
+            
             tembakPanah = false;
         }
 
@@ -411,7 +411,7 @@ public class SimpleGame extends PApplet {
             vam.add(new Vampire(vampire, 90, 90, 100, 100, 250, 260, 80));
             vam.add(new Vampire(vampire, 90, 90, 100, 100, 250, 330, 80));
             vam.add(new Vampire(vampire, 90, 90, 100, 100, 250, 400, 80));
-
+            
             vamOut = false;
         }
 
@@ -421,7 +421,7 @@ public class SimpleGame extends PApplet {
             kn.add(new KnightJalan(knight, 45, 65, 100, 100, 300, 500, 120));
             kn.add(new KnightJalan(knight, 45, 65, 100, 100, 300, 550, 120));
             kn.add(new KnightJalan(knight, 45, 65, 100, 100, 300, 600, 120));
-
+            
             knOut = false;
         }
 
@@ -430,7 +430,7 @@ public class SimpleGame extends PApplet {
             rn.add(new RunningManJalan(runningman, 45, 65, 100, 100, 300, 470, 70));
             rn.add(new RunningManJalan(runningman, 45, 65, 100, 100, 300, 530, 70));
             rn.add(new RunningManJalan(runningman, 45, 65, 100, 100, 300, 590, 70));
-
+            
             rnOut = false;
         }
 
@@ -483,7 +483,7 @@ public class SimpleGame extends PApplet {
         j.drawIdle(this, f);
         ka.drawIdle(this, f);
         l.drawIdle(this, f);
-
+        
         if (wave == 1) {
             // flappy rider
             fr.drawIdle(this, f);
@@ -513,7 +513,7 @@ public class SimpleGame extends PApplet {
                     fr.bergerak(false);
                 }
             }
-
+            
             if (fr3.getXfr() > c.getX() + 200) {
                 fr3.bergerak(true);
             } else if (fr3.getXfr() <= c.getX() + 200) {
@@ -819,7 +819,7 @@ public class SimpleGame extends PApplet {
         for (int i = pan.size() - 1; i >= 0; i--) {
             pan.get(i).bergerak(true);
             pan.get(i).drawIdle(this, f);
-
+            
             if (wave == 1) {
                 if (pan.get(i).getX() >= fr.getXfr() && pan.get(i).getY() <= fr.getYfr() + 25 && pan.get(i).getY() >= fr.getYfr() - 25) {
                     String bip = "src/assets/sound/kenapanah.wav";
@@ -2262,7 +2262,6 @@ public class SimpleGame extends PApplet {
             text("(Gold+10)", xKillEnemy, yKillEnemy);
         }
 
-        
         // cek apakah score sebelumnya > score sekarang
         highScoreManager.updateHighScore(score);
 
@@ -2272,7 +2271,7 @@ public class SimpleGame extends PApplet {
         // muncul button dan tulisan
         fill(255, 255, 255);
         rect(dragon_fight.getX(), dragon_fight.getY(), dragon_fight.getWidth(), dragon_fight.getHeight());
-
+        
         fill(0, 0, 0);
         text("Dragon Fight", (dragon_fight.getX() + dragon_fight.getWidth() / 2) - 78, (dragon_fight.getY() + dragon_fight.getHeight() / 2) + 5);
 
@@ -2281,12 +2280,12 @@ public class SimpleGame extends PApplet {
 
         // mengubah bg saat dragon_fight
         if (createNewWindow) {
-            pm.stop();
+            surface.setVisible(false);
             String[] dragonF = {"dragonF"};
             PApplet.runSketch(dragonF, new DragonFight());
             createNewWindow = false;
         }
-        
+
         // game over
         if (hp <= 0) {
             
@@ -2349,7 +2348,7 @@ public class SimpleGame extends PApplet {
             hpz7 = 1000;
             hpz8 = 1000;
             hpz9 = 1000;
-
+            
             int xGO = 640;
             int yGO = 360;
 
@@ -2379,7 +2378,7 @@ public class SimpleGame extends PApplet {
             hpz7 = 1000;
             hpz8 = 1000;
             hpz9 = 1000;
-
+            
             int xGO = 640;
             int yGO = 360;
             text("Wave +1", xGO, yGO);
@@ -2412,7 +2411,7 @@ public class SimpleGame extends PApplet {
             hpz7 = 1000;
             hpz8 = 1000;
             hpz9 = 1000;
-
+            
             int xGO = 640;
             int yGO = 360;
             text("Wave +1", xGO, yGO);
@@ -2462,11 +2461,11 @@ public class SimpleGame extends PApplet {
             hpz7 = 1000;
             hpz8 = 1000;
             hpz9 = 1000;
-
+            
             int xGO = 640;
             int yGO = 360;
         }
-
+        
         if (wave == 4) {
             exit();
         }
@@ -2527,7 +2526,7 @@ public class SimpleGame extends PApplet {
 //            fill(0);
 //        }
     }
-
+    
     public void keyPressed() {
         // pencet b untuk mengeluarkan bomb dari bomber
         if (key == 'b') {
@@ -2555,7 +2554,7 @@ public class SimpleGame extends PApplet {
             pm.PlayMusic();
         }
     }
-
+    
     public void keyRelease() {
         // lepas b untuk berhenti mengeluarkan bomb dari bomber
         if (key == 'b') {
@@ -2570,14 +2569,14 @@ public class SimpleGame extends PApplet {
             rnOut = false;
         }
     }
-
+    
     public void mousePressed() {
         if (start_dragon_fight) {
             createNewWindow = true;
             start_dragon_fight = false;
         }
     }
-
+    
     public void sensor() {
         if (cekButton(dragon_fight.getX(), dragon_fight.getY(), dragon_fight.getWidth(), dragon_fight.getHeight())) {
             start_dragon_fight = true;
@@ -2585,7 +2584,7 @@ public class SimpleGame extends PApplet {
             start_dragon_fight = false;
         }
     }
-
+    
     public boolean cekButton(int x, int y, int width, int height) {
         if (mouseX >= x && mouseX <= (x + width) && mouseY >= y && mouseY <= (y + height)) {
             return true;
